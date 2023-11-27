@@ -9,7 +9,7 @@ to our app
 from botbuilder.schema import Activity
 from flask import Flask, request, jsonify
 
-from bot import app
+from src.bot import app
 
 api = Flask(__name__)
 

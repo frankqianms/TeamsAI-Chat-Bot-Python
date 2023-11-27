@@ -11,7 +11,7 @@ import traceback
 from botbuilder.core import BotFrameworkAdapterSettings, TurnContext
 from teams import Application, ApplicationOptions, TurnState
 
-from config import Config
+from src.config import Config
 
 config = Config()
 app = Application[TurnState](
