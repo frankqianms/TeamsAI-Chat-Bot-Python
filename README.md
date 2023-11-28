@@ -42,4 +42,4 @@ This sample shows how to incorporate basic conversational flow into a Teams appl
 
 There are two Jupyter notebooks in this repo. 
 1. [How-to-create-an-echobot](How-to-create-an-echobot.ipynb) guides you step by step to create a Teams-ai echo bot and demonstrates you how does every single modules work.
-1. [Try-the-bot](Try-the-bot.ipynb) makes a playground for you to straightly call the functions defined in `src/*.py` modules.
+1. [Try-the-bot](Try-the-bot.ipynb) makes a playground for you to straightly call and test any functions defined in `src/*.py` modules.
