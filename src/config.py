@@ -5,7 +5,6 @@ Licensed under the MIT License.
 
 import os
 
-
 class Config:
     """Bot Configuration"""
 
