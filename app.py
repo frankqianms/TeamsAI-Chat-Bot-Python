@@ -2,7 +2,6 @@
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the MIT License.
 """
-
 from src.api import api
 from src.bot import config
 

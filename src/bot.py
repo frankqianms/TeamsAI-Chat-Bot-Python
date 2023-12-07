@@ -11,7 +11,7 @@ import traceback
 from botbuilder.core import BotFrameworkAdapterSettings, TurnContext
 from teams import Application, ApplicationOptions, TurnState
 
-from src.config import Config
+from .config import Config
 
 config = Config()
 app = Application[TurnState](
@@ -24,12 +24,15 @@ app = Application[TurnState](
     )
 )
 
+@app.before_turn
+async def on_before_turn(context: TurnContext, state: TurnState):
+    await context.send_activity("This is an echo bot!")
+    return True
 
 @app.activity("message")
 async def on_message(context: TurnContext, _state: TurnState):
     await context.send_activity(f"you said: {context.activity.text}")
     return True
-
 
 @app.error
 async def on_error(context: TurnContext, error: Exception):

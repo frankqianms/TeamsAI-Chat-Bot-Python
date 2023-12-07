@@ -42,7 +42,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
   properties: {
     serverFarmId: serverfarm.id
     siteConfig: {
-      appCommandLine: 'gunicorn src.app:api'
+      appCommandLine: 'gunicorn app:api'
       linuxFxVersion: pythonVersion
       appSettings: [
         {
