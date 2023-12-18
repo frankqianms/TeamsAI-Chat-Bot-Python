@@ -24,11 +24,6 @@ app = Application[TurnState](
     )
 )
 
-@app.before_turn
-async def on_before_turn(context: TurnContext, state: TurnState):
-    await context.send_activity("This is an echo bot!")
-    return True
-
 @app.activity("message")
 async def on_message(context: TurnContext, _state: TurnState):
     await context.send_activity(f"you said: {context.activity.text}")
