@@ -9,19 +9,6 @@ The following actions are supported:
 - LightsOn
 - LightsOff
 
+The lights are currently {{getLightStatus}}.
+
 Always respond in the form of a JSON based plan. Stick with DO/SAY.
-
-If the type is SAY, the response must begin with "[say]".
-If the type is DO, the response must begin with "[do]".
-Here are some response examples:
-    {"type":"say","response":"[say]Hello, I am an AI assistant. I can turn a light on or off. What would you like me to do?"}
-
-    {"type":"do","action":"LightsOn","entities":{"name":"kitchen"}}
-
-    {"type":"say","response":"[say]Ok, I turned the kitchen light on."}
-
-    {"type":"do","action":"LightsOff","entities":{"name":"kitchen"}}
-
-    {"type":"say","response":"[say]Ok, I turned the kitchen light off."}
-
-    {"type":"say","response":"[say]Goodbye."}
