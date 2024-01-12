@@ -93,3 +93,12 @@ deploy:
       # You can replace it with your existing Azure Resource id
       # or add it to your environment variable file.
       resourceId: ${{BOT_AZURE_APP_SERVICE_RESOURCE_ID}}
+
+  - uses: script
+    with:
+      run: |
+        try { $Response = Invoke-WebRequest -Uri "https://${{BOT_DOMAIN}}/api/ping" $StatusCode = $Response.StatusCode} catch {$StatusCode = $_.Exception.Response.StatusCode.value__}
+      workingDirectory: ./
+      shell: pwsh
+
+projectId: bae30b19-ed57-4bd4-97f8-f3778fc8b691
