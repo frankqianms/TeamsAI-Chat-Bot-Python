@@ -42,7 +42,8 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
   properties: {
     serverFarmId: serverfarm.id
     siteConfig: {
-      appCommandLine: 'gunicorn app:api'
+      alwaysOn: true
+      appCommandLine: 'gunicorn --bind=0.0.0.0 --timeout 600 app:api'
       linuxFxVersion: pythonVersion
       appSettings: [
         {
