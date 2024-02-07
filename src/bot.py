@@ -8,26 +8,43 @@ Description: initialize the app and listen for `message` activitys
 import sys
 import traceback
 
-from botbuilder.core import BotFrameworkAdapterSettings, TurnContext
-from teams import Application, ApplicationOptions, TurnState
+from botbuilder.core import BotFrameworkAdapterSettings, TurnContext, MemoryStorage
+from teams import AIHistoryOptions, AIOptions, Application, ApplicationOptions, AzureOpenAIPlanner, AzureOpenAIPlannerOptions, TurnState
+from src.utils.state import *
 
 from .config import Config
-
 config = Config()
+
+default_prompt_folder = "src/prompts"
+default_prompt = "chat"
+
+planner = AzureOpenAIPlanner(
+    AzureOpenAIPlannerOptions(
+        config.AZURE_OPENAI_KEY,
+        config.AZURE_OPENAI_MODEL_DEPLOYMENT_NAME,
+        config.AZURE_OPENAI_ENDPOINT,
+        prompt_folder=default_prompt_folder,
+    )
+)
+storage = MemoryStorage()
 app = Application[TurnState](
     ApplicationOptions(
-        bot_app_id=config.app_id,
         auth=BotFrameworkAdapterSettings(
             app_id=config.app_id,
             app_password=config.app_password,
         ),
+        ai=AIOptions(
+            planner=planner,
+            prompt=default_prompt,
+            history=AIHistoryOptions(assistant_history_type="text"),
+        ),
+        storage=storage,
     )
 )
 
-@app.activity("message")
-async def on_message(context: TurnContext, _state: TurnState):
-    await context.send_activity(f"you said: {context.activity.text}")
-    return True
+@app.turn_state_factory
+async def on_state_factory(activity: Activity):
+    return await AppTurnState.from_activity(activity, storage)
 
 @app.error
 async def on_error(context: TurnContext, error: Exception):

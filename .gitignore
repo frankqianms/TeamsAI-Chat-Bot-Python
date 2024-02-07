@@ -8,6 +8,7 @@ appPackage/build
 # python virtual environment
 .venv/
 src/__pycache__/
+src/utils/__pycache__/
 
 # others
 .deployment/
