@@ -12,3 +12,5 @@ src/utils/__pycache__/
 
 # others
 .deployment/
+node_modules/
+devTools/*.log

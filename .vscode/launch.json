@@ -47,11 +47,23 @@
         },
         {
             "name": "Start Python",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "program": "${workspaceFolder}/app.py",
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
+        },
+        {
+            "name": "Start Test Tool",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/node_modules/@microsoft/teams-app-test-tool/cli.js",
+            "args": [
+                "start",
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
         }
     ],
     "compounds": [
@@ -84,6 +96,22 @@
             "presentation": {
                 "group": "all",
                 "order": 2
+            },
+            "stopAll": true
+        },
+        {
+            "name": "Debug in Test Tool (Preview)",
+            "configurations": [
+                "Start Python",
+                "Start Test Tool",
+            ],
+            "cascadeTerminateToConfigurations": [
+                "Start Test Tool"
+            ],
+            "preLaunchTask": "Install Test Tool",
+            "presentation": {
+                "group": "1-local",
+                "order": 1
             },
             "stopAll": true
         }
