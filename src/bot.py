@@ -9,7 +9,7 @@ import sys
 import traceback
 
 from botbuilder.core import BotFrameworkAdapterSettings, TurnContext, MemoryStorage
-from teams import AIHistoryOptions, AIOptions, Application, ApplicationOptions, AzureOpenAIPlanner, AzureOpenAIPlannerOptions, TurnState
+from teams import AIHistoryOptions, AIOptions, Application, ApplicationOptions, AzureOpenAIPlanner, AzureOpenAIPlannerOptions, OpenAIPlanner, OpenAIPlannerOptions, TurnState
 from src.utils.state import *
 
 from .config import Config
@@ -18,14 +18,23 @@ config = Config()
 default_prompt_folder = "src/prompts"
 default_prompt = "chat"
 
-planner = AzureOpenAIPlanner(
-    AzureOpenAIPlannerOptions(
-        config.AZURE_OPENAI_KEY,
-        config.AZURE_OPENAI_MODEL_DEPLOYMENT_NAME,
-        config.AZURE_OPENAI_ENDPOINT,
+# Use OpenAI
+planner = OpenAIPlanner(
+    OpenAIPlannerOptions(
+        config.OPENAI_KEY,
+        config.OPENAI_MODEL_DEPLOYMENT_NAME,
         prompt_folder=default_prompt_folder,
     )
 )
+# Uncomment the following lines to use Azure OpenAI
+# planner = AzureOpenAIPlanner(
+#     AzureOpenAIPlannerOptions(
+#         config.AZURE_OPENAI_KEY,
+#         config.AZURE_OPENAI_MODEL_DEPLOYMENT_NAME,
+#         config.AZURE_OPENAI_ENDPOINT,
+#         prompt_folder=default_prompt_folder,
+#     )
+# )
 storage = MemoryStorage()
 app = Application[TurnState](
     ApplicationOptions(
