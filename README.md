@@ -17,15 +17,17 @@ The app template is built using the Teams AI library, which provides the capabil
 >
 > To run the AI Chat Bot template in your local dev machine, you will need:
 >
-> - [Node.js](https://nodejs.org/), supported versions: 16, 18
 > - [Python](https://www.python.org/), version 3.11 or higher
 > - [Python extension](https://code.visualstudio.com/docs/languages/python), version v2024.0.1 or higher
 > - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teamsfx-cli)
 > - An account with [Azure OpenAI](https://aka.ms/oai/access) or [OpenAI](https://platform.openai.com/).
+> - An [M365 account](https://developer.microsoft.com/en-us/microsoft-365/dev-program) for local debug, or [Node.js](https://nodejs.org/) (supported versions: 16, 18) for local debug in Test Tool.
 
 1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-1. In file [env/.env.testtool.user](env/.env.testtool.user), fill in your Azure OpenAI key `SECRET_AZURE_OPENAI_API_KEY=<your-key>`, deployment name `SECRET_AZURE_OPENAI_MODEL_DEPLOYMENT_NAME=<your-deployment-name>` and endpoint `SECRET_AZURE_OPENAI_ENDPOINT=<your-endpoint>`.
-1. Press F5 to start debugging which launches your app in Teams App Test Tool using a web browser. Select `Debug in Test Tool (Preview)`.
+1. In file [.env](.env), fill in your Azure OpenAI key `AZURE_OPENAI_API_KEY=<your-key>`, deployment name `AZURE_OPENAI_MODEL_DEPLOYMENT_NAME=<your-deployment-name>` and endpoint `AZURE_OPENAI_ENDPOINT=<your-endpoint>`.
+1. Local debug
+    * If you have an M365 account, select `Debug(Edge)` or `Debug(Chrome)`. Press F5 to start debugging which launches your app in Teams App using a web browser. 
+    * If you don't have an M365 account, select `Debug in Test Tool (Preview)`. Press F5 to start debugging which launches your app in Teams App Test Tool using a web browser.
 1. You can send any message to get a response.
 
 **Congratulations**! You are running an application that can now interact with users in Teams App Test Tool:
@@ -40,7 +42,7 @@ Above steps use Azure OpenAI as AI service, optionally, you can also use OpenAI 
 >
 > - Prepare your own [OpenAI](https://platform.openai.com/) resource.
 
-1. In file [env/.env.testtool.user](env/.env.testtool.user), fill in your OpenAI key `SECRET_OPENAI_API_KEY=<your-key>` and `SECRET_OPENAI_MODEL_DEPLOYMENT_NAME=<your-deployment-name>`.
+1. In file [.env](.env), fill in your OpenAI key `OPENAI_API_KEY=<your-key>` and `OPENAI_MODEL_DEPLOYMENT_NAME=<your-deployment-name>`.
 1. In [src/bot.py](src/bot.py), comment out *"Use Azure OpenAI"* part and uncomment *"use OpenAI"* part, e.g.
     ```python
     # Use Azure OpenAI
