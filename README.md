@@ -30,7 +30,7 @@ The app template is built using the Teams AI library, which provides the capabil
     * If you don't have an M365 account, select `Debug in Test Tool (Preview)`. Press F5 to start debugging which launches your app in Teams App Test Tool using a web browser.
 1. You can send any message to get a response.
 
-**Congratulations**! You are running an application that can now interact with users in Teams App Test Tool:
+**Congratulations**! You are running an application that can now interact with users in Teams App or Teams App Test Tool:
 
 ![ai chat bot](https://github.com/OfficeDev/TeamsFx/assets/9698542/9bd22201-8fda-4252-a0b3-79531c963e5e)
 
