@@ -18,20 +18,20 @@ config = Config()
 default_prompt_folder = "src/prompts"
 default_prompt = "chat"
 
-# Use OpenAI
-planner = OpenAIPlanner(
-    OpenAIPlannerOptions(
-        config.OPENAI_KEY,
-        config.OPENAI_MODEL_DEPLOYMENT_NAME,
+# Use Azure OpenAI
+planner = AzureOpenAIPlanner(
+    AzureOpenAIPlannerOptions(
+        config.AZURE_OPENAI_KEY,
+        config.AZURE_OPENAI_MODEL_DEPLOYMENT_NAME,
+        config.AZURE_OPENAI_ENDPOINT,
         prompt_folder=default_prompt_folder,
     )
 )
-# Uncomment the following lines to use Azure OpenAI
-# planner = AzureOpenAIPlanner(
-#     AzureOpenAIPlannerOptions(
-#         config.AZURE_OPENAI_KEY,
-#         config.AZURE_OPENAI_MODEL_DEPLOYMENT_NAME,
-#         config.AZURE_OPENAI_ENDPOINT,
+# Uncomment the following lines to use OpenAI
+# planner = OpenAIPlanner(
+#     OpenAIPlannerOptions(
+#         config.OPENAI_KEY,
+#         config.OPENAI_MODEL_DEPLOYMENT_NAME,
 #         prompt_folder=default_prompt_folder,
 #     )
 # )

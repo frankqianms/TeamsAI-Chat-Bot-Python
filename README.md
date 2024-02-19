@@ -21,10 +21,10 @@ The app template is built using the Teams AI library, which provides the capabil
 > - [Python](https://www.python.org/), version 3.11 or higher
 > - [Python extension](https://code.visualstudio.com/docs/languages/python), version v2024.0.1 or higher
 > - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teamsfx-cli)
-> - An account with [OpenAI](https://platform.openai.com/).
+> - An account with [Azure OpenAI](https://aka.ms/oai/access) or [OpenAI](https://platform.openai.com/).
 
 1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-1. In file [env/.env.testtool.user](env/.env.testtool.user), fill in your OpenAI key `SECRET_OPENAI_API_KEY=<your-key>` and `SECRET_OPENAI_MODEL_DEPLOYMENT_NAME=<your-model-name>`.
+1. In file [env/.env.testtool.user](env/.env.testtool.user), fill in your Azure OpenAI key `SECRET_AZURE_OPENAI_API_KEY=<your-key>`, deployment name `SECRET_AZURE_OPENAI_MODEL_DEPLOYMENT_NAME=<your-deployment-name>` and endpoint `SECRET_AZURE_OPENAI_ENDPOINT=<your-endpoint>`.
 1. Press F5 to start debugging which launches your app in Teams App Test Tool using a web browser. Select `Debug in Test Tool (Preview)`.
 1. You can send any message to get a response.
 
@@ -32,31 +32,31 @@ The app template is built using the Teams AI library, which provides the capabil
 
 ![ai chat bot](https://github.com/OfficeDev/TeamsFx/assets/9698542/9bd22201-8fda-4252-a0b3-79531c963e5e)
 
-### Use Azure OpenAI
+### Use OpenAI
 
-Above steps use OpenAI as AI service, optionally, you can also use Azure OpenAI as AI service.
+Above steps use Azure OpenAI as AI service, optionally, you can also use OpenAI as AI service.
 
 > **Prerequisites**
 >
-> - Prepare your own [Azure OpenAI](https://aka.ms/oai/access) resource.
+> - Prepare your own [OpenAI](https://platform.openai.com/) resource.
 
-1. In file [env/.env.testtool.user](env/.env.testtool.user), fill in your Azure OpenAI key `SECRET_AZURE_OPENAI_API_KEY=<your-key>`, deployment name `SECRET_AZURE_OPENAI_MODEL_DEPLOYMENT_NAME=<your-model-name>` and endpoint `SECRET_AZURE_OPENAI_ENDPOINT=<your-endpoint>`.
-1. In [src/bot.py](src/bot.py), comment out *"Use OpenAI"* part and uncomment *"use Azure OpenAI"* part, e.g.
+1. In file [env/.env.testtool.user](env/.env.testtool.user), fill in your OpenAI key `SECRET_OPENAI_API_KEY=<your-key>` and `SECRET_OPENAI_MODEL_DEPLOYMENT_NAME=<your-deployment-name>`.
+1. In [src/bot.py](src/bot.py), comment out *"Use Azure OpenAI"* part and uncomment *"use OpenAI"* part, e.g.
     ```python
-    # Use OpenAI
-    # planner = OpenAIPlanner(
-    #     OpenAIPlannerOptions(
-    #         config.OPENAI_KEY,
-    #         config.OPENAI_MODEL_DEPLOYMENT_NAME,
+    # Use Azure OpenAI
+    # planner = AzureOpenAIPlanner(
+    #     AzureOpenAIPlannerOptions(
+    #         config.AZURE_OPENAI_KEY,
+    #         config.AZURE_OPENAI_MODEL_DEPLOYMENT_NAME,
+    #         config.AZURE_OPENAI_ENDPOINT,
     #         prompt_folder=default_prompt_folder,
     #     )
     # )
-    # Uncomment the following lines to use Azure OpenAI
-    planner = AzureOpenAIPlanner(
-        AzureOpenAIPlannerOptions(
-            config.AZURE_OPENAI_KEY,
-            config.AZURE_OPENAI_MODEL_DEPLOYMENT_NAME,
-            config.AZURE_OPENAI_ENDPOINT,
+    # Uncomment the following lines to use OpenAI
+    planner = OpenAIPlanner(
+        OpenAIPlannerOptions(
+            config.OPENAI_KEY,
+            config.OPENAI_MODEL_DEPLOYMENT_NAME,
             prompt_folder=default_prompt_folder,
         )
     )
