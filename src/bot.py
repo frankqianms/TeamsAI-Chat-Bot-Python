@@ -10,12 +10,12 @@ import traceback
 
 from botbuilder.core import BotFrameworkAdapterSettings, TurnContext, MemoryStorage
 from teams import AIHistoryOptions, AIOptions, Application, ApplicationOptions, AzureOpenAIPlanner, AzureOpenAIPlannerOptions, OpenAIPlanner, OpenAIPlannerOptions, TurnState
-from src.utils.state import *
+from state import *
 
-from .config import Config
+from config import Config
 config = Config()
 
-default_prompt_folder = "src/prompts"
+default_prompt_folder = "prompts"
 default_prompt = "chat"
 
 # Use Azure OpenAI

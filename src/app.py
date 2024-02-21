@@ -2,8 +2,8 @@
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the MIT License.
 """
-from src.api import api
-from src.bot import config
+from api import api
+from bot import config
 
 if __name__ == "__main__":
     try:
