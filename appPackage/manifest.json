@@ -1,50 +1,46 @@
 {
-    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.15/MicrosoftTeams.schema.json",
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.16",
     "version": "1.0.0",
-    "manifestVersion": "1.15",
     "id": "${{TEAMS_APP_ID}}",
-    "packageName": "com.package.name",
-    "name": {
-        "short": "EchoBot-${{TEAMSFX_ENV}}",
-        "full": "Echo Bot"
-    },
+    "packageName": "com.microsoft.teams.extension",
     "developer": {
-        "name": "Microsoft",
-        "mpnId": "",
-        "websiteUrl": "https://microsoft.com",
-        "privacyUrl": "https://privacy.microsoft.com/en-us/privacystatement",
-        "termsOfUseUrl": "https://www.microsoft.com/en-us/legal/terms-of-use"
-    },
-    "description": {
-        "short": "Sample bot that repeats back what you say",
-        "full": "Sample bot that repeats back what you say"
+        "name": "Teams App, Inc.",
+        "websiteUrl": "https://www.example.com",
+        "privacyUrl": "https://www.example.com/privacy",
+        "termsOfUseUrl": "https://www.example.com/termofuse"
     },
     "icons": {
-        "outline": "outline.png",
-        "color": "color.png"
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "aiChatBot${{APP_NAME_SUFFIX}}",
+        "full": "full name for aiChatBot"
+    },
+    "description": {
+        "short": "short description for aiChatBot",
+        "full": "full description for aiChatBot"
     },
     "accentColor": "#FFFFFF",
-    "staticTabs": [
-        {
-            "entityId": "conversations",
-            "scopes": ["personal"]
-        },
-        {
-            "entityId": "about",
-            "scopes": ["personal"]
-        }
-    ],
     "bots": [
         {
             "botId": "${{BOT_ID}}",
-            "scopes": ["personal", "team", "groupChat"],
-            "isNotificationOnly": false,
-            "supportsCalling": false,
-            "supportsVideo": false,
-            "supportsFiles": false
+            "scopes": [
+                "personal",
+                "team",
+                "groupchat"
+            ],
+            "supportsFiles": false,
+            "isNotificationOnly": false
         }
     ],
-    "validDomains": [
-        "${{BOT_DOMAIN}}"
-    ]
+    "composeExtensions": [],
+    "configurableTabs": [],
+    "staticTabs": [],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": []
 }

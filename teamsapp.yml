@@ -11,7 +11,7 @@ provision:
   - uses: teamsApp/create
     with:
       # Teams app name
-      name: EchoBot-${{TEAMSFX_ENV}}
+      name: aiChatBot-${{TEAMSFX_ENV}}
     # Write the information of created resources into environment file for
     # the specified environment variable(s).
     writeToEnvironmentFile:
@@ -21,7 +21,7 @@ provision:
   - uses: botAadApp/create
     with:
       # The Azure Active Directory application's display name
-      name: EchoBot-${{TEAMSFX_ENV}}
+      name: aiChatBot-${{TEAMSFX_ENV}}
     writeToEnvironmentFile:
       # The Azure Active Directory application's client id created for bot.
       botId: BOT_ID
@@ -85,7 +85,7 @@ deploy:
   - uses: azureAppService/zipDeploy
     with:
       # Deploy base folder
-      artifactFolder: .
+      artifactFolder: src
       # Ignore file location, leave blank will ignore nothing
       ignoreFile: .webappignore
       # The resource id of the cloud resource to be deployed to.

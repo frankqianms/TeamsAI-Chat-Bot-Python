@@ -1,5 +1,0 @@
-flask
-fastapi==0.101.0
-uvicorn==0.23.2
-teams_ai-0.0.0-py3-none-any.whl
-semantic_kernel==0.3.7.dev0
