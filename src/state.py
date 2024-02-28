@@ -7,16 +7,16 @@ from typing import Optional
 
 from botbuilder.core import Storage
 from botbuilder.schema import Activity
-from teams.ai.state import ConversationState, TurnState, UserState
+from teams.state import DefaultConversationState, TurnState, DefaultUserState
 
 class AppTurnState(TurnState):
-    conversation: ConversationState
+    conversation: DefaultConversationState
 
     @classmethod
     async def from_activity(
         cls, activity: Activity, storage: Optional[Storage] = None
     ) -> "AppTurnState":
         return cls(
-            conversation=await ConversationState.from_activity(activity, storage),
-            user=await UserState.from_activity(activity, storage),
+            conversation=await DefaultConversationState.from_activity(activity, storage),
+            user=await DefaultUserState.from_activity(activity, storage),
         )
